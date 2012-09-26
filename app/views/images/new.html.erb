@@ -1,0 +1,8 @@
+<h1>Images#new</h1>
+<%= form_for @image do |f| %>
+	<div class="field">
+	    <%= f.label :image_url %><br />
+	    <%= f.text_field :image_url, :id => 'image_url' %>
+	</div>
+    <div class="actions"><%= f.submit "Submit", :id => "submit" %></div>
+<% end %>

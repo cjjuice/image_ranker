@@ -23,12 +23,17 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'guard-rspec'
-  gem 'growl'
 end  
 
-gem "capybara"
+group :test do
+  gem 'guard-rspec'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
+
 gem 'jquery-rails'
+gem 'rb-fsevent', '~> 0.9.1'
+gem 'growl'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
