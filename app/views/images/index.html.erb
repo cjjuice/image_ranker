@@ -1,7 +1,17 @@
-<h1>Images</h1>
-
-<% @images.each do |f| %>
-   <ul>
-     <li><%= link_to (image_tag f.image_url), f.image_url %></li>
-   </ul>	
+<h1>Top Images</h1>
+<%= link_to "Add Image", new_image_path %>
+<ul>
+<% @images.each do |image| %>
+  <div class="image">
+  <li><%= link_to (image_tag image.image_url, :size => "250x250"), image.image_url %></li>
+  <em>
+    | <%= pluralize image.reputation_value_for(:votes).to_i, "vote" %>
+    | <%= link_to "up", vote_image_path(image, type: "up"), method: "post" %>
+    | <%= link_to "down", vote_image_path(image, type: "down"), method: "post" %>
+    <% if current_user == image.user %>
+      | <%= link_to "delete", image, :method => :delete, :class => 'action' %>
+    <% end %>
+  </em>
+</div>
 <% end %>
+</ul>

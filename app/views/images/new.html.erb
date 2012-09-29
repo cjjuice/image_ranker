@@ -1,7 +1,8 @@
-<h1>Images#new</h1>
+<h1>Add an Image</h1>
+<p> Make sure you are adding an image link (should end in .jpg/.gif/.png ect.) </p>
 <%= form_for @image do |f| %>
 	<div class="field">
-	    <%= f.label :image_url %><br />
+	    <%= f.label :image_link %><br />
 	    <%= f.text_field :image_url, :id => 'image_url' %>
 	</div>
     <div class="actions"><%= f.submit "Submit", :id => "submit" %></div>
