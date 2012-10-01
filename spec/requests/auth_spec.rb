@@ -4,6 +4,7 @@ describe "Auth" do
 
     it "allows user to signup for site" do
       visit '/signup'
+      fill_in "user_username", :with => 'jbar'
       fill_in "user_email", :with => 'Joe@bar.com' 
       fill_in "user_password", :with => 'secretpassword'
       fill_in "user_password_confirmation", :with => 'secretpassword'

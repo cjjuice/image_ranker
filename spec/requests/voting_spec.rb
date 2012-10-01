@@ -9,8 +9,7 @@ describe "image voting" do
   
   it "allows users to upvote an image" do
        visit root_path
-       
-       
+
   end
    
 end

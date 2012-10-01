@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120929013445) do
+ActiveRecord::Schema.define(:version => 20121001175226) do
 
   create_table "images", :force => true do |t|
     t.string   "image_url"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20120929013445) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "username"
   end
 
 end

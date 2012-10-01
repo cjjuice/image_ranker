@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :username, :email, :password, :password_confirmation
   has_secure_password 
-  validates_uniqueness_of :email
-  validates_presence_of :email, :password_digest
+  validates_length_of :username, :maximum => 15, :message => "less than %d if you don't mind"
+  validates_uniqueness_of :email, :message => "Email already registered."
+  validates_uniqueness_of :username , :message => "Username already taken. Try again!"
+  validates_presence_of :username, :email, :password_digest , :message => "You must complete them all!"
   
   has_many :images
   
