@@ -7,9 +7,9 @@ class ImagesController < ApplicationController
     @image = Image.new(params[:image])
     @image.user_id = current_user.id if current_user
       if @image.save
-    			redirect_to root_url, notice: "Thank you for signing up!"
+    			redirect_to root_url, notice: "Image submitted!"
     	else
-    			render "new"
+    			redirect_to :back, alert: "Make sure you are submitting a valid image link!"
     	end
   end
 
@@ -18,10 +18,15 @@ class ImagesController < ApplicationController
   end
   
   def vote
+    begin
     value = params[:type] == "up" ? 1 : -1
     @image = Image.find(params[:id])
-    @image.add_or_update_evaluation(:votes, value, current_user)
+    @image.add_or_update_evaluation(:votes, value, current_user) 
+    rescue  
+    redirect_to :back, alert: "You must login to vote!"
+    else  
     redirect_to :back, notice: "Thank you for voting!"
+    end
   end
   
   def destroy
