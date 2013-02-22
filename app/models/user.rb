@@ -14,5 +14,4 @@ class User < ActiveRecord::Base
   def voted_for?(image)
     evaluations.where(target_type: image.class, target_id: image.id).present?
   end
-  
 end
