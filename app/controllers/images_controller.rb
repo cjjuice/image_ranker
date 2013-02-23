@@ -14,7 +14,7 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = Image.ordered_by_score
+    @images = Image.find_with_reputation(:votes, :all, order: "rs_reputations.value/(((#{Time.now.tv_sec} - EXTRACT (EPOCH FROM images.created_at))/3600) + 2)^1.5 DESC")
   end
   
   def vote
