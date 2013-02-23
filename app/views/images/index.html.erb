@@ -8,7 +8,7 @@
 	<% if image.user %>
 	| <%= image.user.username %>
 	<% end %>
-    | <%= pluralize image.reputation_for(:votes).to_i, "vote" %>
+    | <%= pluralize image.normalized_reputation_for(:votes).to_i, "vote" %>
     | <%= link_to "up", vote_image_path(image, type: "up"), method: "post" %>
     | <%= link_to "down", vote_image_path(image, type: "down"), method: "post" %>
     <% if current_user == image.user %>
