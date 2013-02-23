@@ -14,7 +14,7 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = Image.all
+    @images = Image.ordered_by_score
   end
   
   def vote
