@@ -15,6 +15,6 @@ class Image < ActiveRecord::Base
     age_in_hours = "(#{Time.now.tv_sec} - EXTRACT (EPOCH FROM images.created_at))/3600"
     total_score = "(rs_reputations.value - 1)/((#{age_in_hours}) + 2)^1.5"
 
-    joins("INNER JOIN rs_reputations ON rs_reputations.target_id = images.id").where("rs_reputations.target_type = 'Image'").order("#{total_score} DESC")
+    joins("INNER JOIN rs_reputations ON rs_reputations.target_id = images.id").where("rs_reputations.target_type = 'Image'").order(total_score)
   end
 end
