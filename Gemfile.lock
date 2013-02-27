@@ -173,6 +173,9 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    valid_email (0.0.4)
+      activemodel
+      mail
     websocket (1.0.7)
     xpath (1.0.0)
       nokogiri (~> 1.3)
@@ -191,6 +194,7 @@ DEPENDENCIES
   guard-rspec
   jquery-rails
   less-rails
+  mail
   pg
   rails (= 3.2.8)
   rb-fsevent (~> 0.9.1)
@@ -199,3 +203,4 @@ DEPENDENCIES
   therubyracer
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  valid_email
