@@ -1,0 +1,7 @@
+<p><%= @user.username %>,</p>
+
+<p>Your almost there! Just click the link below to confirm your email!</p>
+
+<%= link_to "Confirm email!", root_url + "users/#{@user.id}/confirm/#{@user.confirmation_code}" %> 
+
+<p>Happy Ranking!</p>
