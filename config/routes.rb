@@ -9,5 +9,5 @@ ImageRanker::Application.routes.draw do
     member { post :vote }
   end
 
-  root to: 'images#index'
+  root to: 'users#index'
 end

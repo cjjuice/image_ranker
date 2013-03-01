@@ -1,4 +1,7 @@
 class ImagesController < ApplicationController
+
+  before_filter :authorize
+
   def new
     @image = Image.new
   end
