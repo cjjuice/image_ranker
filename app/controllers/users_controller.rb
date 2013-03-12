@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
   
   def index
+    redirect_to images_path if current_user 
   end
 
   def create

@@ -9,4 +9,5 @@ class Image < ActiveRecord::Base
   validates_presence_of :image_url , :message => "Must submit an image!"
   validates_format_of   :image_url , :with => %r{\.(jpg|gif|png)$}i , :message => "Link must be an image!"
   
+  self.per_page = 16
 end

@@ -11,6 +11,8 @@ gem "twitter-bootstrap-rails"
 gem 'pg'
 gem 'mail'
 gem 'valid_email'
+gem 'will_paginate'
+gem "binding_of_caller"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,6 +28,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem "better_errors"
 end  
 
 group :test do

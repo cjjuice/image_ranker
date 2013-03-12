@@ -1,17 +1,20 @@
 <h1>What's Hot at URI?</h1>
-<%= link_to "Add Image", '#', :class => 'add_image' %>
+<%= link_to "Add Image", new_image_path, :class => 'add_image' %>
 <ul>
 <% @images.each do |image| %>
   <div class="image">
-  <li><%= link_to (image_tag image.image_url, :size => "250x250", :class => "img-polaroid"), image.image_url %></li>
-  <em>
-    | <%= link_to "up", vote_image_path(image, type: "up"), method: "post" %>
-    | <%= link_to "down", vote_image_path(image, type: "down"), method: "post" %>
-	| <%= pluralize image.reputation_for(:votes).to_i, "vote" %>
-    <% if current_user == image.user %>
-      | <%= link_to "delete", image, :method => :delete, :class => 'action' %>
-    <% end %>
-  </em>
-</div>
+    <li><%= link_to (image_tag image.image_url, :size => "250x250", :class => "img-polaroid"), image.image_url %></li>
+    <em>
+      | <%= link_to "up", vote_image_path(image, type: "up"), method: "post" %>
+      | <%= link_to "down", vote_image_path(image, type: "down"), method: "post" %>
+	    | <%= pluralize image.reputation_for(:votes).to_i, "vote" %>
+      <% if current_user == image.user %>
+        | <%= link_to "delete", image, :method => :delete, :class => 'action' %>
+      <% end %>
+    </em>
+  </div>
 <% end %>
 </ul>
+<div class="pages">
+  <%= will_paginate @images %>
+</div>

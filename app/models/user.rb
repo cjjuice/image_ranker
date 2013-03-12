@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
   uri_email_regex = /\A[\w+\-.]+@my\.uri\.edu\z/i
   
   validates_length_of :username, :maximum => 15
-  #validates_uniqueness_of :email
+  validates_uniqueness_of :email
   validates_uniqueness_of :username  
   validates_presence_of :username, :email, :password, :password_confirmation
-  # validates :email, :email => { :message => "Must be a valid email." } , :format => {:with => uri_email_regex , :message => "must be a valid URI email ( my.uri.edu )"}
+  validates :email, :email => { :message => "Must be a valid email." } , :format => {:with => uri_email_regex , :message => "must be a valid URI email ( my.uri.edu )"}
   
   has_many :images
   
@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   def confirm!
     self.confirmation_code = nil
     self.confirmed = true
+    self.save(:validate => false)
   end
   
   before_create :set_confirmation_code

@@ -7,8 +7,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.create(params[:image])
-    @image.user_id = current_user.id if current_user
+    @image = current_user.images.create(params[:image])
     if @image.save
     	redirect_to root_url, notice: "Image submitted!"
     else
@@ -17,7 +16,7 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = Image.find_with_reputation(:votes, :all, order: "rs_reputations.value/(((#{Time.now.tv_sec} - EXTRACT (EPOCH FROM images.created_at))/3600) + 2)^1.5 DESC")
+    @images = Image.page(params[:page]).find_with_reputation(:votes, :all, :order => "rs_reputations.value/(((#{Time.now.tv_sec} - EXTRACT (EPOCH FROM images.created_at))/3600) + 2)^1.5 DESC")
   end
   
   def vote
