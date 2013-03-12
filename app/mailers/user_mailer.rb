@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "imageranker@gmail.com"
+  default from: "imageranker@image-ranker.herokuapp.com"
 
   def signup_confirmation(user)
     @user = user
