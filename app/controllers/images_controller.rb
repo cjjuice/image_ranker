@@ -5,6 +5,13 @@ class ImagesController < ApplicationController
   def new
     @image = Image.new
   end
+  
+  def show
+     @image = Image.find(params[:id])
+     @commentable = @image
+     @comments = @commentable.comments
+     @comment = Comment.new
+  end
 
   def create
     @image = current_user.images.create(params[:image])
