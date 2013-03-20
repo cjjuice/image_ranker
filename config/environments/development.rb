@@ -15,12 +15,11 @@ ImageRanker::Application.configure do
 
   # Care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => 'localhost' }
   
   # Change mail delvery to either :smtp, :sendmail, :file, :test
   # config.action_mailer.delivery_method = :smtp
-  ENV['SENDGRID_PASSWORD']= 'hqixro6e'
-  ENV['SENDGRID_USERNAME']= 'app7994788@heroku.com'
+  ENV['SENDGRID_PASSWORD']= '334hg445'
+  ENV['SENDGRID_USERNAME']= 'cjjuice'
   
   # Specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = {host: "localhost:3000"}
