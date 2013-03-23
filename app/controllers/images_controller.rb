@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
   def show
      @image = Image.find(params[:id])
      @commentable = @image
-     @comments = @commentable.comments
+     @comments = @commentable.comments.order('created_at')
      @comment = Comment.new
   end
 

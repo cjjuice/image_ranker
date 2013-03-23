@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
+    user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
       if user.confirmed?
         session[:user_id] = user.id
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         render "new"  
       end  
     else  
-      flash.now.alert = "Email or password is invalid"
+      flash.now.alert = "Username or password is invalid"
       render "new"
     end
   end
