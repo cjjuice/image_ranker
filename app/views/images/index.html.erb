@@ -1,5 +1,11 @@
-<h1>What's Hot at URI?</h1>
-<%= link_to "Add Image", new_image_path, :class => 'add_image' %>
+<h1>University of Rhode Island</h1>
+<div class="add_image">
+  <%= link_to "Add Image", new_image_path, :class => 'add_image' %>
+</div>
+<div class="sort">
+  <%= link_to "Hot", images_path(sort: 'hot'), method: "get" %> | 
+  <%= link_to "New", images_path(sort: 'new'), method: "get" %>
+</div>
 <ul>
 <% @images.each do |image| %>
   <div class="image">

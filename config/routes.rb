@@ -9,6 +9,7 @@ ImageRanker::Application.routes.draw do
   resources :sessions
   resources :images do
     member { post :vote }
+    resource  :sort
     resources :comments
   end
 

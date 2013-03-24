@@ -23,7 +23,11 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = Image.page(params[:page]).find_with_reputation(:votes, :all, :order => "rs_reputations.value/(((#{Time.now.tv_sec} - EXTRACT (EPOCH FROM images.created_at))/3600) + 2)^1.5 DESC")
+    if params[:sort] == "new" 
+      @images = Image.page(params[:page]).find_with_reputation(:votes, :all, :order => "created_at DESC")
+    else 
+      @images = Image.page(params[:page]).find_with_reputation(:votes, :all, :order => "rs_reputations.value/(((#{Time.now.tv_sec} - EXTRACT (EPOCH FROM images.created_at))/3600) + 2)^1.5 DESC")
+    end    
   end
   
   def vote
