@@ -14,16 +14,11 @@ li {
 
 .image {
 	display: inline-block;
-  width: 250px;
+  width: 212px;
 	text-align: center;
   vertical-align: top;
   margin-right: 20px;
   margin-top: 20px;
-}
-
-.field {
-  padding-bottom: 10px;
-  padding-top: 10px;
 }
 .pages {
   margin-top: 20px;
@@ -31,9 +26,13 @@ li {
   float: right;
 }
 .add_image {
-  display: inline;
+  display: inline-block;
 }
 .sort {
-  display:inline;
-  margin-left: 50px;
+  display:inline-block;
+  float: right;
+  margin-right: 5px;
+}
+h1 {
+  margin-bottom: 30px;
 }

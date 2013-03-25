@@ -1,15 +1,15 @@
 <h1>University of Rhode Island</h1>
 <div class="add_image">
-  <%= link_to "Add Image", new_image_path, :class => 'add_image' %>
+  <%= link_to "Add Image", new_image_path, :class => 'add_image btn btn-primary' %>
 </div>
-<div class="sort">
-  <%= link_to "Hot", images_path(sort: 'hot'), method: "get" %> | 
-  <%= link_to "New", images_path(sort: 'new'), method: "get" %>
+<div class="sort btn-group">
+  <%= link_to "Hot", images_path(sort: 'hot'), method: "get", class: "btn" %> | 
+  <%= link_to "New", images_path(sort: 'new'), method: "get", class: "btn" %>
 </div>
 <ul>
 <% @images.each do |image| %>
   <div class="image">
-    <li><%= link_to (image_tag image.image_url, :size => "250x250", :class => "img-polaroid"), image_path(image.id) %></li>
+    <li><%= link_to (image_tag image.image_url, :size => "212x212", :class => "img-polaroid"), image_path(image.id) %></li>
     <em>
       <% if current_user == image.user %>
         | <%= link_to "delete", image, :method => :delete, :class => 'action' %>
@@ -23,6 +23,6 @@
   </div>
 <% end %>
 </ul>
-<div class="pages">
+<div class="pages pagination">
   <%= will_paginate @images %>
 </div>
