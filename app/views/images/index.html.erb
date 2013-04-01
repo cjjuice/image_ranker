@@ -12,7 +12,7 @@
     <li><%= link_to (image_tag image.image_url, :size => "265x265", :class => "img-polaroid"), image_path(image.id) %></li>
     <em>
       <% if image.reputation_for(:votes).to_i > 0  %>
-	      <b style="color: blue;">+<%= image.reputation_for(:votes).to_i %></b> 
+	      <b style="color: green;">+<%= image.reputation_for(:votes).to_i %></b> 
       <% elsif image.reputation_for(:votes).to_i == 0 %> 
         <b><%= image.reputation_for(:votes).to_i %></b>  
       <%  else %> 
@@ -23,7 +23,7 @@
         | <%= link_to "delete", image, :method => :delete, :class => 'action' %> 
       <% else %>
         | <%= link_to "up", vote_image_path(image, type: "up"), method: "post" %> 
-        | <%= link_to "down", vote_image_path(image, type: "down"), method: "post" %> |  
+        | <%= link_to "down", vote_image_path(image, type: "down"), method: "post" %>  
       <% end %>
       | <%= link_to (pluralize image.comments.count, "comment"), image_path(image.id) %> |  
     </em>
