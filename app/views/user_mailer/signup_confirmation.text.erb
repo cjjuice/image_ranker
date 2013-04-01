@@ -2,6 +2,6 @@
 
 Your almost there! Just click the link below to confirm your email!
 
-<%= link_to root_url + "users/#{@user.id}/confirm/#{@user.confirmation_code}", root_url + "users/#{@user.id}/confirm/#{@user.confirmation_code}" %> 
+<%= link_to "Validate Email!", root_url + "users/#{@user.id}/confirm/#{@user.confirmation_code}" %> 
 
 Happy Ranking!
