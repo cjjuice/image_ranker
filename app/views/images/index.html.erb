@@ -9,7 +9,7 @@
 <ul>
 <% @images.each do |image| %>
   <div class="image">
-    <li><%= link_to (image_tag image.image_url, :size => "212x212", :class => "img-polaroid"), image_path(image.id) %></li>
+    <li><%= link_to (image_tag image.image_url, :size => "265x265", :class => "img-polaroid"), image_path(image.id) %></li>
     <em>
       <% if current_user == image.user %>
         | <%= link_to "delete", image, :method => :delete, :class => 'action' %>
