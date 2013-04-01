@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
 
-  before_filter :authorize, :except => :index
+  before_filter :authorize, :except => [:index, :show]
 
   def new
     @image = Image.new

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :load_commentable
+  before_filter :authorize, :except => :index
   
   def index
     @comments = @commentable.comments
