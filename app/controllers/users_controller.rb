@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    params[:user][:username] = params[:user][:username].downcase
     @user = User.create(params[:user])
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
