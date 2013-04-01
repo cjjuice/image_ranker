@@ -11,15 +11,21 @@
   <div class="image">
     <li><%= link_to (image_tag image.image_url, :size => "265x265", :class => "img-polaroid"), image_path(image.id) %></li>
     <em>
-      <% if current_user == image.user %>
-        | <%= link_to "delete", image, :method => :delete, :class => 'action' %>
-      <% else %>
-        | <%= link_to "up", vote_image_path(image, type: "up"), method: "post" %>
-        | <%= link_to "down", vote_image_path(image, type: "down"), method: "post" %>  
-      <% end %>
-	    | <%= pluralize image.reputation_for(:votes).to_i, "vote" %> |
+      <% if image.reputation_for(:votes).to_i > 0  %>
+	      <b style="color: blue;">+<%= image.reputation_for(:votes).to_i %></b> 
+      <% elsif image.reputation_for(:votes).to_i == 0 %> 
+        <b><%= image.reputation_for(:votes).to_i %></b>  
+      <%  else %> 
+        <b style="color: red;"><%= image.reputation_for(:votes).to_i %></b>
+      <% end %> 
       <br />
-      <%= link_to (pluralize image.comments.count, "comment"), image_path(image.id) %>
+      <% if current_user == image.user %>
+        | <%= link_to "delete", image, :method => :delete, :class => 'action' %> 
+      <% else %>
+        | <%= link_to "up", vote_image_path(image, type: "up"), method: "post" %> 
+        | <%= link_to "down", vote_image_path(image, type: "down"), method: "post" %> |  
+      <% end %>
+      | <%= link_to (pluralize image.comments.count, "comment"), image_path(image.id) %> |  
     </em>
   </div>
 <% end %>
