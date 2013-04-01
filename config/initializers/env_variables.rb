@@ -1,0 +1,1 @@
+ENV['FROM_EMAIL'] = "imageranker@image-ranker.herokuapp.com"

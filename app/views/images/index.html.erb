@@ -17,8 +17,9 @@
         | <%= link_to "up", vote_image_path(image, type: "up"), method: "post" %>
         | <%= link_to "down", vote_image_path(image, type: "down"), method: "post" %>  
       <% end %>
-	    | <%= pluralize image.reputation_for(:votes).to_i, "vote" %>
-      | <%= link_to (pluralize image.comments.count, "comment"), image_path(image.id) %>
+	    | <%= pluralize image.reputation_for(:votes).to_i, "vote" %> |
+      <br />
+      <%= link_to (pluralize image.comments.count, "comment"), image_path(image.id) %>
     </em>
   </div>
 <% end %>

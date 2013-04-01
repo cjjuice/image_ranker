@@ -1,4 +1,6 @@
 ImageRanker::Application.routes.draw do
+  get "password_resets/new"
+
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
@@ -7,11 +9,12 @@ ImageRanker::Application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :password_resets
   resources :images do
     member { post :vote }
     resource  :sort
     resources :comments
   end
 
-  root to: 'users#index'
+  root to: 'images#index'
 end

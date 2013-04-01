@@ -28,8 +28,21 @@ class User < ActiveRecord::Base
   before_create :set_confirmation_code
   
   def set_confirmation_code
-    self.confirmation_code = Digest::SHA1.hexdigest([Time.now, rand].join)
+    self.confirmation_code = loop do
+      random_token = SecureRandom.urlsafe_base64
+      break random_token unless User.where(confirmation_code: random_token).exists?
+    end
     self.confirmed = false
     return true # must return true in order for ActiveRecord to save 
-  end  
+  end 
+  
+  def send_password_reset
+    self.password_reset_token = loop do
+      random_token = SecureRandom.urlsafe_base64
+      break random_token unless User.where(password_reset_token: random_token).exists?
+    end
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end 
 end
