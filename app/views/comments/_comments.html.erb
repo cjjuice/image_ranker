@@ -1,7 +1,7 @@
 <div id="comments">
   <% @comments.each do |comment| %>
     <div class="comment">
-      <p><b><%= comment.created_at.strftime('%D %I:%M%P') %></b>: <%= comment.content %></p>
+      <p><b><%= (comment.created_at - 4.hours).strftime('%D %I:%M%P') %></b>: <%= comment.content %></p>
     </div>
   <% end %>
 </div>
