@@ -34,7 +34,11 @@ class ImagesController < ApplicationController
     begin
       value = params[:type] == "up" ? 1 : -1
       @image = Image.find(params[:id])
-      @image.add_or_update_evaluation(:votes, value, current_user) 
+      if current_user.admin? == true
+        @image.increase_evaluation(:votes, value, current_user)
+      else  
+        @image.add_or_update_evaluation(:votes, value, current_user)
+      end   
     rescue  
       redirect_to :back, alert: "You must login to vote!"
     else  

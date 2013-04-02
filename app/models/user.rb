@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation
+  attr_reader :admin
   has_secure_password 
   
   uri_email_regex = /\A[\w+\-.]+@my\.uri\.edu\z/i
