@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "imageranker@image-ranker.herokuapp.com"
+  default from: "no-reply@imageranker.co"
 
   def signup_confirmation(user)
     @user = user
@@ -8,6 +8,6 @@ class UserMailer < ActionMailer::Base
   
   def password_reset(user)
     @user = user
-    mail to: user.email, subject: "Password Reset"
+    mail to: user.email, subject: "ImageRanker Password Reset"
   end  
 end
