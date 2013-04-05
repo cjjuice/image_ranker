@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect_to root_url, notice: "Logged in!"
       else
-        flash.now.alert = "Email has not been confirmed! Check your email for the confirmation link."
+        flash.now.alert = "Email has not been confirmed! Check your email spam folder for the confirmation link."
         render "new"  
       end  
     else  
