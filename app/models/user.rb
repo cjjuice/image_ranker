@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates :email, :email => { :message => "Must be a valid email." } , :format => {:with => uri_email_regex , :message => "must be a valid URI email ( my.uri.edu )"}
   
   has_many :images
-  has_many :comments, as: :commentable
+  has_many :comments
   
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 
