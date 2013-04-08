@@ -4,9 +4,10 @@ describe "image submission" do
   
   before :each do
     user = FactoryGirl.create(:user)
+    user.confirm!
 
     visit '/login'
-    fill_in "email", :with => user.email
+    fill_in "username", :with => user.username
     fill_in "password", :with => user.password 
     click_button "Log In"
   end
@@ -17,6 +18,7 @@ describe "image submission" do
     visit new_image_path
     fill_in 'image_url', :with => image
     click_button 'submit'
-   end
+    Image.last.image_url.should eql image
+  end
    
 end  

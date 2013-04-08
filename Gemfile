@@ -10,7 +10,6 @@ gem 'valid_email'
 gem 'will_paginate'
 gem "binding_of_caller"
 gem 'newrelic_rpm'
-gem "paperclip", "~> 3.0"
 
 
 # Gems used only for assets and not required
