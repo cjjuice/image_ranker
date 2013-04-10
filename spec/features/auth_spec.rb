@@ -5,10 +5,11 @@ describe "Auth" do
    it "allows user to signup for site" do
       visit '/signup'
       fill_in "user_username", :with => 'jbar'
-      fill_in "user_email", :with => 'Joe@bar.com' 
+      fill_in "user_email", :with => 'joe@my.uri.edu' 
       fill_in "user_password", :with => 'secretpassword'
       fill_in "user_password_confirmation", :with => 'secretpassword'
       click_button "sign_up"	
+      page.should have_content "Confirm your email below"
     end
 
 
@@ -23,7 +24,6 @@ describe "Auth" do
       click_button "Log In"
       expect(page).to have_selector(".navbar", :text => user.username)	
     end
-
 
     it "allows user to logout to site" do
       
