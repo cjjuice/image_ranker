@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.create(params[:user])
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
-      redirect_to root_url, notice: "Thank you for signing up! Check your email to validate your account. Please check your spam folder!"
+      redirect_to root_url, notice: "Thank you for signing up! Check your email to validate your account."
     else
       render "new"
     end

@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_uniqueness_of :username  
   validates_presence_of :username, :email, :password, :password_confirmation
-  validates :email, :email => { :message => "Must be a valid email." } , :format => {:with => uri_email_regex , :message => "must be a valid URI email ( my.uri.edu )"}
+  validates :email, :email => { :message => "Must be a valid email." }
   
   has_many :images
   has_many :comments
