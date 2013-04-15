@@ -19,7 +19,7 @@
         <b style="color: red; font-size: 1.2em;"><%= image.reputation_for(:votes).to_i %></b>
       <% end %> 
       <br />
-      <% if current_user == image.user && current_user.admin? == false %>
+      <% if current_user && current_user == image.user && current_user.admin? == false %>
         | <%= link_to "delete", image, :method => :delete, :class => 'action' %> 
       <% else %>
         | <%= link_to "up", vote_image_path(image, type: "up"), method: "post" %> 
