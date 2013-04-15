@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :email, :password, :password_confirmation
   validates :email, :email => { :message => "Must be a valid email." }
   
+  belongs_to :school
+  
   has_many :images
   has_many :comments
   
