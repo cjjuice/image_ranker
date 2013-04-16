@@ -1,22 +1,22 @@
 class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation
   attr_reader :admin
-  has_secure_password 
-  
-  uri_email_regex = /\A[\w+\-.]+@my\.uri\.edu\z/i
-  
-  validates_length_of :username, :maximum => 15
-  validates_uniqueness_of :email
-  validates_uniqueness_of :username  
-  validates_presence_of :username, :email, :password, :password_confirmation
-  validates :email, :email => { :message => "Must be a valid email." }
-  
+  has_secure_password
   belongs_to :school
   
   has_many :images
   has_many :comments
   
-  has_many :evaluations, class_name: "RSEvaluation", as: :source
+  has_many :evaluations, class_name: "RSEvaluation", as: :source 
+  
+  validates_length_of :username, :maximum => 15
+  validates_uniqueness_of :email
+  validates_uniqueness_of :username  
+  validates_presence_of :username, :email, :password, :password_confirmation
+  validates :email, 
+            :email => { :message => "Must be a valid email." }, 
+            :format => { :with => lambda {|user| /\A[\w+\-.]+@#{Regexp.quote(user.school.email_domain)}\z/i }, :message => "Must be your school's email!" }
+
 
   def voted_for?(image)
     evaluations.where(target_type: image.class, target_id: image.id).present?

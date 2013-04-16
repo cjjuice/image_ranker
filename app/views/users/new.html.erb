@@ -16,7 +16,7 @@
 	  <%= f.text_field :username, :placeholder => "Username"  %>
   </div>	
   <div class="field">
-    <%= f.text_field :email, :placeholder => "Email"%>
+    <%= f.text_field :email, :placeholder => "Email ( #{@school.email_domain} )"%>
   </div>
   <div class="field">
     <%= f.password_field :password, :placeholder => "Password" %>
