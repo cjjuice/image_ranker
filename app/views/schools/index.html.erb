@@ -39,7 +39,7 @@
     </div> 
     <div class="visible-phone">
       <% @schools.each do |school| %>
-        <button class="btn btn-large btn-block"><%= link_to school.name, root_url(subdomain: school.subdomain) %></button>
+        <%= link_to school.name, root_url(subdomain: school.subdomain), class: "btn btn-primary btn-large btn-block" %>
       <% end %>
     </div>     
   </div>
