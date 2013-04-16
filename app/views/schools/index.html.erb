@@ -10,7 +10,7 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="background: #000000 url(/assets/debut_dark.png) repeat left top;">
+<body style="background: #000000 url(/assets/debut_dark.png) repeat left top; padding-top: 60px;">
   <div class="container">
 	  <% flash.each do |name, msg| %>
 		  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
