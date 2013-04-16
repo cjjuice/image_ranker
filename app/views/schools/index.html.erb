@@ -21,8 +21,8 @@
     <div class="main-logo">
       <%= image_tag("large_logo.png") %>
     </div>  
-      <div class="school-container">
-        <div class="school-dropdown">
+    <div class="school-container hidden-phone">
+      <div class="school-dropdown">
         <ul class="nav nav-pills">
           <div class="btn-group" id="school_menu">
             <a class="btn-large btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
@@ -34,10 +34,14 @@
                 <li><%= link_to school.name, root_url(subdomain: school.subdomain) %></li>
               <% end %>
             </ul>
-          </li>
-        </ul>
-      </div> 
+         </ul>
+      </div>   
     </div> 
+    <div class="visible-phone">
+      <% @schools.each do |school| %>
+        <button class="btn btn-large btn-block"><%= link_to school.name, root_url(subdomain: school.subdomain) %></button>
+      <% end %>
+    </div>     
   </div>
   <footer style="height: 25px; padding-top: 50px; font-size: 10px; text-align: center;">
     <a href="http://www.twitter.com/imageranker">@imageranker</a>
