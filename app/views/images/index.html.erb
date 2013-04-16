@@ -1,4 +1,4 @@
-<h1>University of Rhode Island</h1>
+<h1><%= @school.name %></h1>
 <div class="add_image">
   <%= link_to "Add Image", new_image_path, :class => 'add_image btn btn-primary' %>
 </div>
@@ -22,8 +22,8 @@
       <% if current_user && current_user == image.user && current_user.admin? == false %>
         | <%= link_to "delete", image, :method => :delete, :class => 'action' %> 
       <% else %>
-        | <%= link_to "up", vote_image_path(image, type: "up"), method: "post" %> 
-        | <%= link_to "down", vote_image_path(image, type: "down"), method: "post" %>  
+        | <%= link_to "up", vote_image_path(image, type: "up"), :method => :post %> 
+        | <%= link_to "down", vote_image_path(image, type: "down"), :method => :post %>  
       <% end %>
       | <%= link_to (pluralize image.comments.count, "comment"), image_path(image.id) %> |  
     </em>

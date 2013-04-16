@@ -2,6 +2,6 @@
 
 Your almost there! Confirm your email below!
 
-<%= root_url + "users/#{@user.id}/confirm/#{@user.confirmation_code}" %> 
+<%= root_url(subdomain: @user.school.subdomain) + "users/#{@user.id}/confirm/#{@user.confirmation_code}" %> 
 
 Happy Ranking!

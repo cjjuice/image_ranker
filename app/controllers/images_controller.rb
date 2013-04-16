@@ -1,22 +1,22 @@
 class ImagesController < ApplicationController
-
   before_filter :authorize, :except => [:index, :show]
+  before_filter :load_school
 
   def new
     @image = Image.new
   end
   
   def show
-     @image = Image.find(params[:id])
+     @image = @school.images.find(params[:id])
      @commentable = @image
      @comments = @commentable.comments.order('created_at')
      @comment = Comment.new
   end
 
   def create
-    @image = current_user.images.create(params[:image])
+    @image = current_user.school.images.create(params[:image])
     if @image.save
-    	redirect_to root_url, notice: "Image submitted!"
+    	redirect_to images_path, notice: "Image submitted!"
     else
     	redirect_to :back, alert: "Make sure you are submitting a valid image link!"
     end
@@ -24,16 +24,16 @@ class ImagesController < ApplicationController
 
   def index
     if params[:sort] == "new" 
-      @images = Image.page(params[:page]).find_with_reputation(:votes, :all, :order => "created_at DESC")
+      @images = @school.images.page(params[:page]).find_with_reputation(:votes, :all, :order => "created_at DESC")
     else 
-      @images = Image.page(params[:page]).find_with_reputation(:votes, :all, :order => "rs_reputations.value/(((#{Time.now.tv_sec} - EXTRACT (EPOCH FROM images.created_at))/3600) + 2)^1.5 DESC")
+      @images = @school.images.page(params[:page]).find_with_reputation(:votes, :all, :order => "rs_reputations.value/(((#{Time.now.tv_sec} - EXTRACT (EPOCH FROM images.created_at))/3600) + 2)^1.5 DESC")
     end    
   end
   
   def vote
     begin
       value = params[:type] == "up" ? 1 : -1
-      @image = Image.find(params[:id])
+      @image = @school.images.find(params[:id])
       if current_user.admin? == true
         @image.increase_evaluation(:votes, value, current_user)
       else  
@@ -47,7 +47,7 @@ class ImagesController < ApplicationController
   end
   
   def destroy
-    Image.destroy(params[:id])
+    @school.images.destroy(params[:id])
     redirect_to :back, notice: "Image deleted!"
   end  
 end

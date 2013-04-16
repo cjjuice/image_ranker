@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Ranker</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background: #000000 url(/assets/debut_dark.png) repeat left top;">
+  <div class="container">
+	  <% flash.each do |name, msg| %>
+		  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+		    <a class="close" data-dismiss="alert">×</a>
+		    <%= msg %>
+		  </div>
+		<% end %>
+    <div class="main-logo">
+      <%= image_tag("large_logo.png") %>
+    </div>  
+      <div class="school-container">
+        <div class="school-dropdown">
+        <ul class="nav nav-pills">
+          <div class="btn-group" id="school_menu">
+            <a class="btn-large btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+              Select Your School
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <% @schools.each do |school| %>
+                <li><%= link_to school.name, root_url(subdomain: school.subdomain) %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </div> 
+    </div> 
+  </div>
+  <footer style="height: 25px; padding-top: 50px; font-size: 10px; text-align: center;">
+    <a href="http://www.twitter.com/imageranker">@imageranker</a>
+	</footer>
+</body>
+</html>
