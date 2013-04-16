@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :load_school
+  
   def new
     @user = User.new
   end
@@ -9,7 +11,7 @@ class UsersController < ApplicationController
 
   def create
     params[:user][:username] = params[:user][:username].downcase
-    @user = User.create(params[:user])
+    @user = @school.users.create(params[:user])
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
       redirect_to root_url, notice: "Thank you for signing up! Check your email to validate your account."
@@ -20,7 +22,7 @@ class UsersController < ApplicationController
   
   def check_confirm_code
     if params[:user_id] && params[:confirmation_code]
-      user = User.find(params[:user_id])
+      user = @school.users.find(params[:user_id])
       if user.confirmation_code == params[:confirmation_code]
         user.confirm!
         session[:user_id] = user.id

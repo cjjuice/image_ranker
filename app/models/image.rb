@@ -3,6 +3,7 @@ class Image < ActiveRecord::Base
   attr_accessible :image_url 
   
   belongs_to :user
+  belongs_to :school
   
   has_reputation :votes, source: :user, aggregated_by: :sum
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408164541) do
+ActiveRecord::Schema.define(:version => 20130415213909) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20130408164541) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.integer  "school_id"
   end
 
   create_table "rs_evaluations", :force => true do |t|
@@ -75,6 +76,14 @@ ActiveRecord::Schema.define(:version => 20130408164541) do
   add_index "rs_reputations", ["reputation_name"], :name => "index_rs_reputations_on_reputation_name"
   add_index "rs_reputations", ["target_id", "target_type"], :name => "index_rs_reputations_on_target_id_and_target_type"
 
+  create_table "schools", :force => true do |t|
+    t.string   "name"
+    t.string   "subdomain"
+    t.string   "email_domain"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "password_digest"
@@ -86,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20130408164541) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.boolean  "admin"
+    t.integer  "school_id"
   end
 
 end

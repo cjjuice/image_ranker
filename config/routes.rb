@@ -15,6 +15,7 @@ ImageRanker::Application.routes.draw do
     resource  :sort
     resources :comments
   end
-
-  root to: 'images#index'
+   
+  match '', to: 'images#index', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' } 
+  root to: 'schools#index'
 end
