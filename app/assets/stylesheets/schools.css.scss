@@ -1,3 +1,28 @@
 // Place all the styles related to the schools controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main-logo {
+  margin:0 auto;
+  padding-bottom: 40px;
+  padding-top: 0px;
+  text-align: center;
+}
+
+.school-container {
+  position: relative;
+  margin:0 auto;
+  background: #ffffff url(/assets/lazy_senior.jpg) no-repeat;
+  width: 488px;
+  height: 325px;
+  border: 4px white solid;
+  border-radius: 8px;
+}
+
+.school-dropdown {
+  position:absolute;
+  margin-left: 245px;
+  margin-top: 105px;
+  width: 209px;
+  height:43px;
+}
