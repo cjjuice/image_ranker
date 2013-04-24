@@ -16,6 +16,7 @@ class ImagesController < ApplicationController
   def create
     @image = current_user.school.images.create(params[:image])
     if @image.save
+      @image.add_or_update_evaluation(:votes, 1, current_user)
     	redirect_to images_path, notice: "Image submitted!"
     else
     	redirect_to :back, alert: "Make sure you are submitting a valid image link!"
